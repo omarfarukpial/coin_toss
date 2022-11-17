@@ -17,18 +17,21 @@
         This website is for understanding the topic of probabilty of getting head and tail in coin toss. 
         Higher the number of toss, better the probabilty you will get. You can click the "Toss" button multiple time for same value, that will give different result. <b>Happy tossing!</b>
     </div>
-    <div class="container mt-3 px-5 py-3 mb-5">
+    <div class="container px-5">
+        <small id="inputHelp" class="form-text text-muted">Start from small number like 10, then gradually increase the number to 100, 1000 or more.</small>
+    </div>
+    <div class="container mt-3 px-5 py-1 mb-5">
         <div class="row">
             <div class="col">
                 <form>
                     <div class="form-group">
                       <label for="ntoss" class="mb-1 mt-2"><h4>How many times you want to toss?</h4></label>
-                      <input type="number" class="form-control w-50" id="ntoss" min="1" step="1" max="1000000">
-                      <small id="inputHelp" class="form-text text-muted">Please give a positive integer number. [Range is 1 to 1000000]</small><br>
-                      <small id="inputHelp" class="form-text text-muted">Start from small number like 10, then gradually increase the number to 100, 1000 or more.</small>
+                      <input type="number" class="form-control w-50" id="ntoss" min = "1" step="1" value="1">
+                      <small id="inputHelp" class="form-text text-muted">[Range is 1 to 1000000]</small><br>
+                
                     </div>
                     <br>
-                    <button type="button" class="btn btn-warning w-50" onclick="tossCalculation()">Toss!</button>
+                    <button type="button" class="btn btn-warning w-50" onclick="tossCalculation()" >Toss!</button>
                   </form>
             </div>
             <div class="col mt-5">
