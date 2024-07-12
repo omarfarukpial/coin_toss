@@ -52,7 +52,7 @@
                 <form>
                     <div class="form-group">
                       <label for="ntoss" class="mb-1 mt-2"><h4>How many coins you want to toss?</h4></label>
-                      <input type="number" class="form-control w-75" id="ntoss" min = "1" step="1" value="1" onclick="resetbuttontext()" onkeyup="checkLimit()">
+                      <input type="number" class="form-control w-75" id="ntoss" min = "1" step="1" value="1" onclick="resetbuttontext()" onkeyup="checkLimit()" onkeypress="d">
                       <small id="inputHelp" class="form-text text-muted">[Range is 1 to 1000000]<br>[You can click Toss multiple time]</small><br>
                 
                     </div>
@@ -113,7 +113,7 @@
 
         function checkLimit() {
             let toss_number = document.getElementById("ntoss").value;
-            if (toss_number > 1000000) {
+            if (toss_number < 1 || toss_number > 1000000) {
                 document.getElementById("ntoss").style.borderColor = "red";
                 document.getElementById("tossbutton").disabled = true;
             } else {
@@ -121,6 +121,13 @@
                 document.getElementById("tossbutton").disabled = false;
             }
         }
+
+        document.getElementById("ntoss").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("tossbutton").click();
+        }
+        });
 
 
     </script>
