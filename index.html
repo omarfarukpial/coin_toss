@@ -52,7 +52,7 @@
                 <form>
                     <div class="form-group">
                       <label for="ntoss" class="mb-1 mt-2"><h4>How many coins you want to toss?</h4></label>
-                      <input type="number" class="form-control w-75" id="ntoss" min = "1" step="1" value="1" onclick="resetbuttontext()">
+                      <input type="number" class="form-control w-75" id="ntoss" min = "1" step="1" value="1" onclick="resetbuttontext()" onkeyup="checkLimit()">
                       <small id="inputHelp" class="form-text text-muted">[Range is 1 to 1000000]<br>[You can click Toss multiple time]</small><br>
                 
                     </div>
@@ -86,19 +86,19 @@
 
         function tossCalculation() {
 		document.getElementById("tossbutton").innerHTML="Toss Again!";
-            var toss_number = document.getElementById("ntoss").value;
-            var head = 0;
-            var tail = 0;
-            for (var i =0; i<toss_number; i++) {
-                var rand = Math.floor(Math.random()*10000000);
+            const toss_number = document.getElementById("ntoss").value;
+            let head = 0;
+            let tail = 0;
+            for (const i =0; i<toss_number; i++) {
+                const rand = Math.floor(Math.random()*10000000);
                 if (rand%2 == 0) head++;
                 else tail++;
             }
             document.getElementById("headCount").innerHTML=head;
             document.getElementById("tailCount").innerHTML=tail;
             document.getElementById("tossNumber").innerHTML=toss_number;
-            var pHead = (head/toss_number*100).toFixed(2);
-            var pTail = (tail/toss_number*100).toFixed(2);
+            const pHead = (head/toss_number*100).toFixed(2);
+            const pTail = (tail/toss_number*100).toFixed(2);
 
             document.getElementById("pHead").innerHTML=pHead;
             document.getElementById("pTail").innerHTML=pTail;
@@ -106,9 +106,21 @@
         }
 
 
-	function resetbuttontext() {
-		document.getElimentById("tossbutton").innerHTML = "Toss!";
-	}
+        function resetbuttontext() {
+            document.getElementById("tossbutton").innerHTML = "Toss!";
+        }
+
+
+        function checkLimit() {
+            const toss_number = document.getElementById("ntoss").value;
+            if (toss_number > 1000000) {
+                document.getElementById("ntoss").style.borderColor = "red";
+                document.getElementById("tossbutton").disabled = true;
+            } else {
+                document.getElementById("ntoss").style.borderColor = "";
+                document.getElementById("tossbutton").disabled = false;
+            }
+        }
 
 
     </script>
