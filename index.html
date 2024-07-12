@@ -86,19 +86,19 @@
 
         function tossCalculation() {
 		document.getElementById("tossbutton").innerHTML="Toss Again!";
-            const toss_number = document.getElementById("ntoss").value;
+            let toss_number = document.getElementById("ntoss").value;
             let head = 0;
             let tail = 0;
-            for (const i =0; i<toss_number; i++) {
-                const rand = Math.floor(Math.random()*10000000);
+            for (let i =0; i<toss_number; i++) {
+                let rand = Math.floor(Math.random()*10000000);
                 if (rand%2 == 0) head++;
                 else tail++;
             }
             document.getElementById("headCount").innerHTML=head;
             document.getElementById("tailCount").innerHTML=tail;
             document.getElementById("tossNumber").innerHTML=toss_number;
-            const pHead = (head/toss_number*100).toFixed(2);
-            const pTail = (tail/toss_number*100).toFixed(2);
+            let pHead = (head/toss_number*100).toFixed(2);
+            let pTail = (tail/toss_number*100).toFixed(2);
 
             document.getElementById("pHead").innerHTML=pHead;
             document.getElementById("pTail").innerHTML=pTail;
@@ -112,7 +112,7 @@
 
 
         function checkLimit() {
-            const toss_number = document.getElementById("ntoss").value;
+            let toss_number = document.getElementById("ntoss").value;
             if (toss_number > 1000000) {
                 document.getElementById("ntoss").style.borderColor = "red";
                 document.getElementById("tossbutton").disabled = true;
